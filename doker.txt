@@ -26,21 +26,63 @@ Seção 2: Conceitos
 
 6. O que é Docker?
 
-É um sistema de virtualização, porém é diferente porque ao invés de ele criar uma infra para que você virtualize um sistema operacional dentro de uma maquina virtual ele trabalha com o conceito de conteiner, esse conceito de conteiner serve mais ou menos como um emcapsulamento de uma ferramenta, ele tem todos os serviços e todas as dependencias da sua ferramenta, ele ainda utiliza os recursos do host, mais ainda assim é bem mais leve.
+É um sistema de virtualização, porém é diferente porque ao invés de ele criar uma infra para que você virtualize um sistema operacional dentro de uma maquina virtual ele trabalha com o conceito de container, esse conceito de container serve mais ou menos como um emcapsulamento de uma ferramenta, ele tem todos os serviços e todas as dependencias da sua ferramenta, ele ainda utiliza os recursos do host, mais ainda assim é bem mais leve.
 
-Ele trabalha com o conceito de LXC (linux conteiners) ou seja eu preciso utilizar um conteiner baseado em linux.
+Ele trabalha com o conceito de LXC (linux containers) ou seja eu preciso utilizar um container baseado em linux.
 
 ele é criado em GO, e é open source.
 
-ele permite o isolamento com niveis , ou seja eu consigo controlar os recursos que o docker vai utilizar e ainda até fazer com que os arquivos alterados sejam alterados apenas dentro do conteiner.
+ele permite o isolamento com niveis , ou seja eu consigo controlar os recursos que o docker vai utilizar e ainda até fazer com que os arquivos alterados sejam alterados apenas dentro do container.
 
 
 7. Por que não uma VM?
 
-Maquina virtaul é mais barruda e mais completa, porém eles são mais pesados e consomem muitos recursos da maquin, já os conteiners possuiem quase as mesmas vantagens porém sem consumir todos esses recursos, porém um dos defeitos do docker é que ele precisa de um kernel linux para rodar.
+Maquina virtaul é mais barruda e mais completa, porém eles são mais pesados e consomem muitos recursos da maquin, já os containers possuiem quase as mesmas vantagens porém sem consumir todos esses recursos, porém um dos defeitos do docker é que ele precisa de um kernel linux para rodar.
 
 8. O que são containers?
 
-Basicamente ele está dizendo que o conteiner é bem isolado com todos os seus arquivos e suas dependencias, e que como ele é bem leve ele aconselha que você crie um conteiner para cada item da sua stack, ou seja um conteiner para o BD , um para o servidor etc.
+Basicamente ele está dizendo que o container é bem isolado com todos os seus arquivos e suas dependencias, e que como ele é bem leve ele aconselha que você crie um container para cada item da sua stack, ou seja um container para o BD , um para o servidor etc.
 
-e também diz que o conteiner é o meio termo entre o chroot e uma VM, que seria um ambiente que é sim separado mais não 100% independente, o chroot aprisiona o processo a uma nova pasta raiz, e faz com que não seja possivel escrever fora da nova pasta raiz, já a VM é um novo ambiente totalmente separado do sistema onde ele foi instalado, e o docker tem essa compartimentação do chroot mais sem consumir tanto recuros ou ser tão parrudo quanto uma VM.
+e também diz que o container é o meio termo entre o chroot e uma VM, que seria um ambiente que é sim separado mais não 100% independente, o chroot aprisiona o processo a uma nova pasta raiz, e faz com que não seja possivel escrever fora da nova pasta raiz, já a VM é um novo ambiente totalmente separado do sistema onde ele foi instalado, e o docker tem essa compartimentação do chroot mais sem consumir tanto recuros ou ser tão parrudo quanto uma VM.
+
+9. O que são imagens Docker?
+
+É um modelo de sistema de arquivo que é usado para montar um container docker, quando se tem um build da imagem docker ele tem um passo a passo de como criar um novo container isso significa que você vai sempre criar um novo container do mesmo jeito que foi planejado.
+
+da para criar o seu docker file = (descritor) e armazenar no dockerhub ou baixar algumas já prontas
+
+o esquema é fazer esse processo pelo build e não pelo commit, porque não é igual ao git que quando se da o commit ele gera uma versão, no docker se você fizer isso o descritor vai ficar salvo com as suas alterações porém ele não vai conter o passo a passo de como ou do que ele precisa para 
+
+layered - são como niveis, e se eu tiver varios niveis só o ultimo pode ser alterado, e o restante das layers são readonly.
+
+
+10. Imagem vs Container
+
+Imagem é o modelo ou a receita de como criar um container, o container é a execução e montagem da imagem.
+
+tipo uma classe a Imagem é a classe com todos seus atributos e metodos, já o container é o objeto instanciado.
+
+11. Arquitetura
+
+Docker Server , Docker Daemon, Docker engine = são todas as mesmas coisas
+
+CLI =  é uma interface de linha de comando, que acessa o Daemon, que acessa o dockerhub para pegar as suas imagens e baixa.
+
+Registry =  = Nuvem ou gerenciador de pacotes de imagnes do Docker
+
+
+Seção 3: Instalação
+12. Instalação - Visão Geral
+
+Visão geral de Instalação, Aqui ele mostra que quando eu instalo o Docker no linux com o docker opera com a LXC ele é 100% compativel e roda utilizando todas os recursos do kernel.
+
+porém quando vamos instalar isso no MAC OS, ou no Windows < 10 ele cria uma maquina virtual para virtualizar o linux em ambientes que não são linux.
+
+
+13. Instalação Windows
+
+
+14. Instalação Mac
+
+
+15. Instalação Linux
