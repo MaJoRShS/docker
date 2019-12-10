@@ -81,8 +81,36 @@ porém quando vamos instalar isso no MAC OS, ou no Windows < 10 ele cria uma maq
 
 13. Instalação Windows
 
+Está mostrando o passo a passo para instalar o docker no windows , e ai está mostrando como baixar e instalar.
 
 14. Instalação Mac
 
+Mesma coisa, pulei poruqe não tenho MAC, e acho que não vou ter tão cedo.
 
 15. Instalação Linux
+
+Segue o padrão para sua distro, acho que tem para todas.
+
+
+Seção 4: Uso Básico do Docker
+16. Introdução ao Docker Client
+
+Só falou que vamos testar a instalação na proxima aula.
+
+17. Hello World: Meu Docker funciona!
+
+Aqui ele já começa a testar a instalação docker como acessa o terminal (cmd) windows e terminal linux e digita "docker", ele deve apresentar as informações de ajuda do docker, isso já é um sinal de que o docker está instalado e rodando.
+
+para testar se está funcionando a sua instalação usa o comando "docker container run hello-world" se você não tiver essa imagem instalada ele vai fazer o download e mostrar algumas informações dessa imagem, isso já é o sinal que está tudo certo.
+
+OBS.no banco é bloqueado o dockerhub, ou seja não consigo fazer o download das paradas.
+
+18. Meu querido amigo run
+
+Aqui ele esta mostrando que o comando run faz uma serie de coisas por trás, e que ele na real eu teria que fazer mais não preciso.
+
+syntax do docker pelo que eu vi é sempre "docker container alguma coisa" no caso o run ele faz
+docker container pull   = baixa a imagem do Registry(dockerhub)
+docker container create = Cria o container
+docker container start  = Inicia o container
+docker container exec   = Executa o container em modo interativo
