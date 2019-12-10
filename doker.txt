@@ -1,0 +1,46 @@
+Curso de Docker udemy
+
+Seção 1: Introdução
+1. Visão Geral
+
+Visão geral do curso
+
+2. Apresentação - Juracy Filho
+
+Apresenta o curiculo dos manos
+
+3. Apresentação - Leonardo Leitão
+
+Apresenta o curiculo dos manos
+
+4. Material de Apoio: Repositório e Apostila
+
+Tem um material para baixar e um Repositório para poder seguir.
+
+5. Suporte - Boas Práticas
+
+Aqui ele está falando como fazer para acessar o suporte, e como adicionar novas duvidas.
+
+
+Seção 2: Conceitos
+
+6. O que é Docker?
+
+É um sistema de virtualização, porém é diferente porque ao invés de ele criar uma infra para que você virtualize um sistema operacional dentro de uma maquina virtual ele trabalha com o conceito de conteiner, esse conceito de conteiner serve mais ou menos como um emcapsulamento de uma ferramenta, ele tem todos os serviços e todas as dependencias da sua ferramenta, ele ainda utiliza os recursos do host, mais ainda assim é bem mais leve.
+
+Ele trabalha com o conceito de LXC (linux conteiners) ou seja eu preciso utilizar um conteiner baseado em linux.
+
+ele é criado em GO, e é open source.
+
+ele permite o isolamento com niveis , ou seja eu consigo controlar os recursos que o docker vai utilizar e ainda até fazer com que os arquivos alterados sejam alterados apenas dentro do conteiner.
+
+
+7. Por que não uma VM?
+
+Maquina virtaul é mais barruda e mais completa, porém eles são mais pesados e consomem muitos recursos da maquin, já os conteiners possuiem quase as mesmas vantagens porém sem consumir todos esses recursos, porém um dos defeitos do docker é que ele precisa de um kernel linux para rodar.
+
+8. O que são containers?
+
+Basicamente ele está dizendo que o conteiner é bem isolado com todos os seus arquivos e suas dependencias, e que como ele é bem leve ele aconselha que você crie um conteiner para cada item da sua stack, ou seja um conteiner para o BD , um para o servidor etc.
+
+e também diz que o conteiner é o meio termo entre o chroot e uma VM, que seria um ambiente que é sim separado mais não 100% independente, o chroot aprisiona o processo a uma nova pasta raiz, e faz com que não seja possivel escrever fora da nova pasta raiz, já a VM é um novo ambiente totalmente separado do sistema onde ele foi instalado, e o docker tem essa compartimentação do chroot mais sem consumir tanto recuros ou ser tão parrudo quanto uma VM.
