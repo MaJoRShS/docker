@@ -114,3 +114,23 @@ docker container pull   = baixa a imagem do Registry(dockerhub)
 docker container create = Cria o container
 docker container start  = Inicia o container
 docker container exec   = Executa o container em modo interativo
+
+
+19. Ferramentas diferentes
+
+Aqui ele mostra que na real eu to verificando a versão do bash do meu container, e não o da minha maquina local, e que ao executar esse cara na primeira vez ele vai baixar a imagem do debian e trazer para a minha maquina e na proxima execução ele já vai pegar do local.
+
+
+docker container run debian bash --version
+
+
+docker container ps
+esse comando serve para ver quais containers estão sendo executados agora.
+
+
+docker container ps -a 
+Mostra todas as imagens ativas ou não que eu tenho na minha maquina.
+
+
+docker container run --rm debian bash --version
+Aqui ele vai remover essa execução da lista do "ps"
