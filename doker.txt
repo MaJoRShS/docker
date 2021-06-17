@@ -21,10 +21,23 @@ Tem um material para baixar e um Repositório para poder seguir.
 
 Aqui ele está falando como fazer para acessar o suporte, e como adicionar novas duvidas.
 
+6. Usando o terminal
+
+Aqui ele sugere dois artigos no blog da coders para podermos ter uma maior familiaridade com o terminal em qualquer ambiente.
+
+
+
+7. Terminais
+Aqui é onde ele mostra os links mesmo
+Windows -> https://blog.cod3r.com.br/terminal-no-windows/
+
+Linux/Mac -> https://blog.cod3r.com.br/terminal-no-macos-e-linux/
+
+
 
 Seção 2: Conceitos
 
-6. O que é Docker?
+8. O que é Docker?
 
 É um sistema de virtualização, porém é diferente porque ao invés de ele criar uma infra para que você virtualize um sistema operacional dentro de uma maquina virtual ele trabalha com o conceito de container, esse conceito de container serve mais ou menos como um emcapsulamento de uma ferramenta, ele tem todos os serviços e todas as dependencias da sua ferramenta, ele ainda utiliza os recursos do host, mais ainda assim é bem mais leve.
 
@@ -35,17 +48,17 @@ ele é criado em GO, e é open source.
 ele permite o isolamento com niveis , ou seja eu consigo controlar os recursos que o docker vai utilizar e ainda até fazer com que os arquivos alterados sejam alterados apenas dentro do container.
 
 
-7. Por que não uma VM?
+9. Por que não uma VM?
 
-Maquina virtaul é mais barruda e mais completa, porém eles são mais pesados e consomem muitos recursos da maquin, já os containers possuiem quase as mesmas vantagens porém sem consumir todos esses recursos, porém um dos defeitos do docker é que ele precisa de um kernel linux para rodar.
+Maquina virtual é mais parruda e mais completa, porém eles são mais pesados e consomem muitos recursos da maquin, já os containers possuiem quase as mesmas vantagens porém sem consumir todos esses recursos, porém um dos defeitos do docker é que ele precisa de um kernel linux para rodar.
 
-8. O que são containers?
+10. O que são containers?
 
-Basicamente ele está dizendo que o container é bem isolado com todos os seus arquivos e suas dependencias, e que como ele é bem leve ele aconselha que você crie um container para cada item da sua stack, ou seja um container para o BD , um para o servidor etc.
+Basicamente ele está dizendo que o container é bem isolado com todos os seus arquivos e suas dependências, e que como ele é bem leve ele aconselha que você crie um container para cada item da sua stack, ou seja um container para o BD , um para o servidor etc.
 
-e também diz que o container é o meio termo entre o chroot e uma VM, que seria um ambiente que é sim separado mais não 100% independente, o chroot aprisiona o processo a uma nova pasta raiz, e faz com que não seja possivel escrever fora da nova pasta raiz, já a VM é um novo ambiente totalmente separado do sistema onde ele foi instalado, e o docker tem essa compartimentação do chroot mais sem consumir tanto recuros ou ser tão parrudo quanto uma VM.
+e também diz que o container é o meio termo entre o chroot e uma VM, que seria um ambiente que é sim separado mais não 100% independente, o chroot aprisiona o processo a uma nova pasta raiz, e faz com que não seja possível escrever fora da nova pasta raiz, já a VM é um novo ambiente totalmente separado do sistema onde ele foi instalado, e o docker tem essa compartimentação do chroot mais sem consumir tanto recurso ou ser tão parrudo quanto uma VM.
 
-9. O que são imagens Docker?
+11. O que são imagens Docker?
 
 É um modelo de sistema de arquivo que é usado para montar um container docker, quando se tem um build da imagem docker ele tem um passo a passo de como criar um novo container isso significa que você vai sempre criar um novo container do mesmo jeito que foi planejado.
 
@@ -56,13 +69,13 @@ o esquema é fazer esse processo pelo build e não pelo commit, porque não é i
 layered - são como niveis, e se eu tiver varios niveis só o ultimo pode ser alterado, e o restante das layers são readonly.
 
 
-10. Imagem vs Container
+12. Imagem vs Container
 
 Imagem é o modelo ou a receita de como criar um container, o container é a execução e montagem da imagem.
 
 tipo uma classe a Imagem é a classe com todos seus atributos e metodos, já o container é o objeto instanciado.
 
-11. Arquitetura
+13. Arquitetura
 
 Docker Server , Docker Daemon, Docker engine = são todas as mesmas coisas
 
