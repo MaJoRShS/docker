@@ -85,32 +85,49 @@ Registry =  = Nuvem ou gerenciador de pacotes de imagnes do Docker
 
 
 Seção 3: Instalação
-12. Instalação - Visão Geral
+14. Instalação - Visão Geral
 
 Visão geral de Instalação, Aqui ele mostra que quando eu instalo o Docker no linux com o docker opera com a LXC ele é 100% compativel e roda utilizando todas os recursos do kernel.
 
 porém quando vamos instalar isso no MAC OS, ou no Windows < 10 ele cria uma maquina virtual para virtualizar o linux em ambientes que não são linux.
 
 
-13. Instalação Windows
+15. Aviso importante aos usuários de Windows
+
+    'Fala galera! Tranquilo?
+
+    Vim aqui para passar uma dica super rápida, porém super importante para todos que irão dar início às atividades do curso no ambiente Windows.
+
+    Existem duas configurações padrão que vêm ativadas e acabam dificultando ou gerando erros na hora de programar em qualquer ambiente. Vou explicar rapidinho sobre elas e sobre como lidar com isso.
+
+    Na programação é super normal utilizar os caminhos absolutos de localizações na sua máquina em diversos momentos. Às vezes você mesmo utiliza, mas em geral as linguagens utilizam ali por debaixo dos panos para poder serem executadas. Esses caminhos são literalmente "c/users/seuNome/pasta" e tudo mais.
+
+    O primeiro problema é relacionado a Área de Trabalho, pois em alguns casos ela entra nesse caminho absoluto com seu nome em português, ou seja, com espaços e acentos. E isso acaba gerando erro em diversos ambientes. A forma de se lidar com isso é bem simples, basta criar seu projeto em outra pasta que não seja a Área de Trabalho.
+
+    O segundo problema se trata da questão do OneDrive. Nas versões mais recentes do Windows o OneDrive é ativado por padrão e ele acaba deixando todas as pastas e arquivos criados no seu computador como arquivos em nuvem ao invés de arquivos locais. Isso também acaba gerando erros em alguns ambientes. Para resolver isso é simples também, basta desativar essa opção do OneDrive para a pasta do seu projeto, ou desativar geral mesmo. Você escolhe.
+
+    Bons estudos galera!'
+
+
+16. Instalação Windows
 
 Está mostrando o passo a passo para instalar o docker no windows , e ai está mostrando como baixar e instalar.
 
-14. Instalação Mac
+17. Instalação Mac
 
 Mesma coisa, pulei poruqe não tenho MAC, e acho que não vou ter tão cedo.
 
-15. Instalação Linux
+18. Instalação Linux
 
 Segue o padrão para sua distro, acho que tem para todas.
 
 
 Seção 4: Uso Básico do Docker
-16. Introdução ao Docker Client
+19. Introdução ao Docker Client
 
 Só falou que vamos testar a instalação na proxima aula.
 
-17. Hello World: Meu Docker funciona!
+20. Hello World: Meu Docker funciona!
 
 Aqui ele já começa a testar a instalação docker como acessa o terminal (cmd) windows e terminal linux e digita "docker", ele deve apresentar as informações de ajuda do docker, isso já é um sinal de que o docker está instalado e rodando.
 
@@ -118,7 +135,7 @@ para testar se está funcionando a sua instalação usa o comando "docker contai
 
 OBS.no banco é bloqueado o dockerhub, ou seja não consigo fazer o download das paradas.
 
-18. Meu querido amigo run
+21. Meu querido amigo run
 
 Aqui ele esta mostrando que o comando run faz uma serie de coisas por trás, e que ele na real eu teria que fazer mais não preciso.
 
@@ -129,7 +146,7 @@ docker container start  = Inicia o container
 docker container exec   = Executa o container em modo interativo
 
 
-19. Ferramentas diferentes
+22. Ferramentas diferentes
 
 Aqui ele mostra que na real eu to verificando a versão do bash do meu container, e não o da minha maquina local, e que ao executar esse cara na primeira vez ele vai baixar a imagem do debian e trazer para a minha maquina e na proxima execução ele já vai pegar do local.
 
@@ -147,3 +164,16 @@ Mostra todas as imagens ativas ou não que eu tenho na minha maquina.
 
 docker container run --rm debian bash --version
 Aqui ele vai remover essa execução da lista do "ps"
+
+
+23. Run cria sempre novos containers
+
+
+docker container run -it debian bash
+
+as Flags '-i' são para habilitar o modo interativo e a 't' para que eu consiga acessar o terminal dentro do container 
+
+
+24. Containers devem ter nomes únicos
+
+por padrão o docker cria uma hash como nome do container, e isso é horrível para utilizarmos o container por isso o ideal que é sempre renomeemos o container para um nome único que nós consigamos encontra-lo com facilidade depois.
