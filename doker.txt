@@ -210,7 +210,7 @@ Bons estudos!
 Aqui é só passar a flag -p para poder mostra a porta que vai ser utilizada
 
 
-ex. 
+ex. docker container run -p 8080:80 nginx
 
 a porta antes do ':' é a porta da minha maquina ou servidor, e a porta que vem depois é a porta do container mesmo, então aqui a porta 8080 da minha maquina acessa a porta 80 do container.
 
