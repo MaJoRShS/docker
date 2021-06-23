@@ -177,3 +177,52 @@ as Flags '-i' são para habilitar o modo interativo e a 't' para que eu consiga 
 24. Containers devem ter nomes únicos
 
 por padrão o docker cria uma hash como nome do container, e isso é horrível para utilizarmos o container por isso o ideal que é sempre renomeemos o container para um nome único que nós consigamos encontra-lo com facilidade depois.
+E para fazer isso é bem simples é só usar a tag '--name + nomeDoContainer' que ele já atribui o nome que você digitar no seu container, e detalhe a flag name tem que vir antes das tags de modo interativo.
+
+ex. docker container run --name sexoAnal -it debian bash
+
+25. Reutilizar containers
+
+Aqui para poder reutilizar o container que você já criou é só usar o comando "start" com o nome do seu container, por isso a importancia de você nomear seus containers.
+
+ex. docker container start -ai sexoAnal
+
+aqui a tag -a é de attach  e a -i é de interativo.
+
+
+
+26. Cego, surdo e mudo, só que não!
+
+Aqui ele só apresenta que da para fazer, que é copiar e mover coisas do container para o pc e vice versa além de mapeamento de portas e "volumes" que nada mais são que pastas do container.
+
+
+27. Aviso sobre comando no Windows
+
+Fala pessoal, tranquilo?
+
+Na próxima aula, o professor irá parar a execução de um container diretamente do terminal com o comando CTRL+C, porém esse comando só funciona no Mac e no Linux. Para o Windows é preciso utilizar o comando "docker container stop NomeDoContainer".
+
+Bons estudos!
+
+
+28. Mapear portas dos containers
+
+Aqui é só passar a flag -p para poder mostra a porta que vai ser utilizada
+
+
+ex. 
+
+a porta antes do ':' é a porta da minha maquina ou servidor, e a porta que vem depois é a porta do container mesmo, então aqui a porta 8080 da minha maquina acessa a porta 80 do container.
+
+
+29. Aviso sobre o comando pwd
+
+
+Aviso sobre o comando pwd
+Tranquilo, galera?
+
+Passando para avisar que daqui em diante o professor vai utilizar um trecho de comando chamado "pwd". Esse comando retorna o caminho atual da pasta onde o terminal está localizado. Porém, esse "pwd" não irá funcionar em todos os terminais ou sistemas operacionais.
+
+Caso não funcione será necessário utilizar o comando absoluto da pasta em questão. Ou seja, algo como "c/users/SeuNome/docker", variando com a localização da pasta em questão.
+
+Bons estudos!
