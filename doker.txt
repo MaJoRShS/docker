@@ -226,3 +226,70 @@ Passando para avisar que daqui em diante o professor vai utilizar um trecho de c
 Caso não funcione será necessário utilizar o comando absoluto da pasta em questão. Ou seja, algo como "c/users/SeuNome/docker", variando com a localização da pasta em questão.
 
 Bons estudos!
+
+
+30. Mapear diretórios para o container
+
+Aqui ele mostra como podemos mapear uma pasta da nossa maquina para ser utilizado pelo container, no caso aqui alteramos a pasta padrão do nginx para fazer com que a pasta default dele fosse uma pasta que eu criei aqui na minha maquina, deu um certo trabalho porque estamos lidando com caminhos absolutos e tem bastante comando mais é bem simples depois que se intende o conceito.
+
+docker container run --name nginx -p 8080:80 -v C:\Users\lukas\Documents\projects\docker\ex-Docker-Dir\html:/usr/share/nginx/html nginx
+
+aqui a flag de --name é para dar um nome meu para o container
+flag -p é o mapeamento de portas o 1ª valor é porta da minha maquina e o segundo valor depois dos ':' é a porta do container.
+flag -v é para fazer o mapeamento dos volumes(diretórios), antes do ':' é o diretório na minha maquina e depois do ':' é o diretório do container.
+
+
+
+31. Rodar um servidor web em background
+
+Aqui ele apresenta a flag -d que serve para que o nosso container seja executado em background, sendo assim não trava o terminal e nem me obriga a manter uma instancia dele aberta .
+
+docker container run -d --name ex-daemon -p 8080:80 -v C:\Users\lukas\Documents\projects\docker\ex-Docker-Dir\html:/usr/share/nginx/html nginx
+
+aqui a única coisa nova é a flag -d, que serve justamente para deixar o container em background.
+
+
+
+32. Gerenciar o container em background
+
+
+Falou dos 3 comando de start , stop e restart de container.
+
+
+33. Manipulação de containers em modo daemon
+
+Segundo a lenda os comandos 
+
+docker ps
+docker ls
+docker list
+
+sõa todos da syntax antiga, e isso aqui poderia causar alguma confusão porque não dava para ser exatamente o qeu estava sendo listado, e por isso que surgiu a nova syntax que sempre leva o nome do que você está listando antes do comando por exemplo.
+
+docker container ps
+docker volume ls
+docker image list
+
+e cada uma serve para listar ou apresentar alguma coisa específica.
+
+
+LOGs 
+
+existe duas maneiras de se pegar os log's de um container, uma delas é mandando um docker container logs nomeDoContainer que vai mostrar tudo que foi feito até agora no container.
+
+existe o docker inspect nomeDoContainer, que serve para trazer os dados do container, todo tipo de informação a respeito do container em questão.
+
+
+Executar comandos no container em execução.
+
+e ainda temos a possibilidade de executar comandos no container que já está rodando utilizando o comando 'exec'
+
+ficaria assim: docker container exec nomeDoContainer uname -a 
+
+que basicamente ele entra no container e executa o comando que foi colocado depois do nome do container e sai do modo interativo deixando o terminal livre para fazer qualquer coisa.
+
+
+34. Nova sintaxe do Docker Client
+
+Aqui é o exemplo de melhoria de syntax do docker que fez com que os comandos acabassem maiores e mais longos mais muito mais explicitos, porque agora meio que você é obrigado a declarar o que exatamente você está fazendo e no que exatamente, quando for container você coloca mesmo 'docker container ..' ,  quando for imagem você coloca mesmo 'docker image ... '.
+
