@@ -183,7 +183,7 @@ ex. docker container run --name sexoAnal -it debian bash
 
 25. Reutilizar containers
 
-Aqui para poder reutilizar o container que você já criou é só usar o comando "start" com o nome do seu container, por isso a importancia de você nomear seus containers.
+Aqui para poder reutilizar o container que você já criou é só usar o comando "start" com o nome do seu container, por isso a importância de você nomear seus containers.
 
 ex. docker container start -ai sexoAnal
 
@@ -242,7 +242,7 @@ flag -v é para fazer o mapeamento dos volumes(diretórios), antes do ':' é o d
 
 31. Rodar um servidor web em background
 
-Aqui ele apresenta a flag -d que serve para que o nosso container seja executado em background, sendo assim não trava o terminal e nem me obriga a manter uma instancia dele aberta .
+Aqui ele apresenta a flag -d que serve para que o nosso container seja executado em background, sendo assim não trava o terminal e nem me obriga a manter uma instância dele aberta .
 
 docker container run -d --name ex-daemon -p 8080:80 -v C:\Users\lukas\Documents\projects\docker\ex-Docker-Dir\html:/usr/share/nginx/html nginx
 
@@ -291,5 +291,86 @@ que basicamente ele entra no container e executa o comando que foi colocado depo
 
 34. Nova sintaxe do Docker Client
 
-Aqui é o exemplo de melhoria de syntax do docker que fez com que os comandos acabassem maiores e mais longos mais muito mais explicitos, porque agora meio que você é obrigado a declarar o que exatamente você está fazendo e no que exatamente, quando for container você coloca mesmo 'docker container ..' ,  quando for imagem você coloca mesmo 'docker image ... '.
+Aqui é o exemplo de melhoria de syntax do docker que fez com que os comandos acabassem maiores e mais longos mais muito mais explícitos, porque agora meio que você é obrigado a declarar o que exatamente você está fazendo e no que exatamente, quando for container você coloca mesmo 'docker container ..' ,  quando for imagem você coloca mesmo 'docker image ... '.
 
+
+
+**Meus Testes**
+
+docker container run -d --name httpd -p 8080:80 -v C:/Users/lukas/Documents/projects/docker/ex-Docker-Dir/html:/usr/local/apache2/htdocs httpd:2.4
+
+Aqui eu instalei um container do httpd é o próprio apache só que só o serviço de servidor web, ai fiz o mesmo esquema que na aula, coloquei um nome, mapeie as portas que eu queria que ficassem expostas, e ainda mapeie as pastas da minha maquina e as do proprio container , aqui tem um pulo do gato sempre usar as barras (/) que assim eu consigo chegar no diretório que eu quiser.
+
+
+Seção 5: Deixando de Ser Apenas um Usuário
+
+
+35. Introdução
+
+Aqui explicou que vamos aprende a como criar as nossas próprias imagens ou manipular as imagens já existentes do dockerhub.
+
+
+36. Diferenças entre container e imagem
+
+Imagem é um modelo de sistema de arquivo que é utilizado quando um container é criado, container é esse sistema de arquivos pronto para uso, montado e acessível.
+
+
+37. Entendendo melhor as imagens
+
+Aqui ele mostra que a imagem é apenas um arquivo com todas as informações do sistema de arquivo, versões dos componentes e etc, e que podemos sempre criar tags para conseguirmos lidar melhor com as imagens que temos, por exemplo eu crio uma tag para uma imagem que eu tenha no meu pc, sendo assim sempre que eu quiser usar aquele container naquela versão eu uso a minha tag.
+
+Dica, sempre utilizar a versão 'latest' (estável) porque se não podemos quebrar alguma coisa ou pode dar merda, e sempre utilizar versões casadas em PRD e DEV , fazendo assim sempre conseguiremos ter o mesmo problema em todos os ambientes ou a mesma funcionalidade.
+
+
+
+38. Comandos básicos no gerenciamento de imagens
+
+
+Aqui ele mostra os comandos que segundo ele são os mais importantes.
+
+docker image pull - Serve para baixar uma imagem do Registry ou Repositório remoto, muitas vezes ele fica implícito no ( docker container run) que já baixa a imagem caso ele não exista
+
+docker image ls - lista as imagens que temos na maquina
+
+docker image rm - Remove uma imagem do seu cache local 
+
+docker image inspect - mostra inúmeras informações úteis da imagem 
+
+docker image tag - que serve para você criar uma tag para aquela imagem utilizando uma versão especifica o que vai fazer com que você ao utilizar a tag já possua a versão especifica.
+
+docker image build - aqui você cria uma nova imagem que você vai criar um arquivo descritor informando tudo que deve conter no seu container e ai com o build o docker vai construir uma imagem .
+
+docker image push - é para que você envie a sua imagem nova ou com as suas alterações para o Repositório remoto(Registry).
+
+
+
+39. Docker Hub × Docker Registry
+
+
+Docker Registry - é apenas um serviço de registro de imagem , que pode ser publico ou privado
+
+Docker Hub - é um Repositório remoto que é mantido pelo próprio docker e que possui o seu próprio Registry, na pratica o dockerhub possui interface gráfica e algumas coisinhas mais do que só um Registry comum.
+
+
+40. Meu primeiro build
+
+Aqui criamos um novo diretório para poder armazenar e fazer os apontamentos necessários para o container.
+
+utilizando o 'Dockerfile' eu criei uma 'imagem' que nada mais é do que um arquivo descritor contendo as informações do que eu quero no container utilizando imagens já existentes ou até mesmo criando algo totalmente novo.
+
+        FROM nginx:latest
+        RUN echo '<h1> new message of my cock to you!</h1>' > /usr/share/nginx/html/index.html
+
+no exemplo acima o 'FROM' é para dizer de onde eu vou pegar a imagem que já existe e no caso ai de cima é do nginx, o comando 'RUN' server para adicionar mais uma camada(layer) no meu container, e aqui no caso eu vou adicionar essa informação dentro do arquivo 'index.html' dentro do caminho citado ali em cima.
+
+e no meu caso ai funcionou na boa, só que eu não curti muito é essa parada de caminho absoluto, claro que com o tempo se pega mais deve dar muita merda.
+
+ai depois é so usar o comando:
+
+        docker image build -t justTest .
+
+aqui a flag de '-t' serve para que de um nome para minha imagem, que no caso vai servir de nome para minha imagem, e o '.' depois do nome que eu dei é para dizer que ele deve procurar o 'Dockerfile' dentro do diretório local.
+
+e por mais que eu tente não consegui fazer ele apontar para um caminho especifico, mais de dentro do diretório onde ta o Dockerfile funciona então beleza.
+
+outra observação nenhum nome de imagem pode conter letras maiúsculas , só minúsculas e separadas por traço, quer dizer não testei o resto.
