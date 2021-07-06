@@ -1,2 +1,2 @@
-FROM nginx:latest
-RUN echo '<h1> new message of my cock to you!</h1>' > /usr/share/nginx/html/index.html
+FROM httpd:latest
+RUN echo '<h1> I want to have hard sex until the fuck is over!</h1>' > /usr/local/apache2/htdocs/index.html

@@ -374,3 +374,38 @@ aqui a flag de '-t' serve para que de um nome para minha imagem, que no caso vai
 e por mais que eu tente não consegui fazer ele apontar para um caminho especifico, mais de dentro do diretório onde ta o Dockerfile funciona então beleza.
 
 outra observação nenhum nome de imagem pode conter letras maiúsculas , só minúsculas e separadas por traço, quer dizer não testei o resto.
+
+
+
+
+41. Uso das instruções de preparação
+
+Basicamente ele mostrou que é possível passar argumentos para a nossa imagem, e que no caso você meio que declara a sua variável no Dockerfile e na hora de construir a imagem você consegue alterar e passar um novo valor.
+
+
+        docker image build -t build-args-default .
+
+fiz um novo Dockerfile para poder utilizar uma imagem que vem com variável de ambiente, aqui para cima tudo normal, build concluído com sucesso.
+
+
+        docker container run --name ubuntu-with-arg build-args-default bash -c 'echo S3_BUCKET'
+
+
+Aqui eu estou pegando a imagem que eu acabei de criar e dando um nome para ela , além disso já estou mandando printar na tela o valor da variável '$S3_BUCKET', que aqui é 'files' porque eu setei isso como default no Dockerfile.
+
+
+        docker image build --build-arg S3_BUCKET=myapp -t build-another-arg .
+
+Aqui eu to passando o outro valor para o argumento que eu criei no Dockerfile e gerando uma nova imagem com esse novo parâmetro.
+
+
+        docker container run --name ubuntu-another-arg build-another-arg bash -c 'echo $S3_BUCKET'
+
+
+Aqui eu mando printar o valor do parâmetro 'S3_BUCKET' que vem 'myapp', porque foi como ele foi criado.
+
+
+
+        docker image inspect --format="{{index .Config.Labels \"maintainer\"}}" build-another-arg
+
+Aqui eu to tando um inspect direto no parâmetro que eu quero, e to pedindo para traze-lo formatado, aqui no caso é o parâmetro 'maintainer' que eu criei no Dockerfile, passando 'meu nome e site'.
