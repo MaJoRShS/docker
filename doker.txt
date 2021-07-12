@@ -408,4 +408,11 @@ Aqui eu mando printar o valor do parâmetro 'S3_BUCKET' que vem 'myapp', porque 
 
         docker image inspect --format="{{index .Config.Labels \"maintainer\"}}" build-another-arg
 
-Aqui eu to tando um inspect direto no parâmetro que eu quero, e to pedindo para traze-lo formatado, aqui no caso é o parâmetro 'maintainer' que eu criei no Dockerfile, passando 'meu nome e site'.
+Aqui eu to testando um inspect direto no parâmetro que eu quero, e to pedindo para traze-lo formatado, aqui no caso é o parâmetro 'maintainer' que eu criei no Dockerfile, passando 'meu nome e site'.
+
+
+42. Uso das instruções de povoamento
+
+Aqui foi bem simples até eu criei um arquivo na minha maquina e depois copiei ele para dentro do container quando eu fiz o build da imagem, e para podermos exemplificar melhor criamos um index no container que tinha um link para o arquivo que foi enviado para la, sendo assim quando eu acessei o container e cliquei no link tive a certeza que meu arquivo havia sido copiado .
+
+os comandos é mais do mesmo, a magica ta no Dockerfile que está dentro da pasta /build-copy
