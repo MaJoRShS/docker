@@ -416,3 +416,41 @@ Aqui eu to testando um inspect direto no parâmetro que eu quero, e to pedindo p
 Aqui foi bem simples até eu criei um arquivo na minha maquina e depois copiei ele para dentro do container quando eu fiz o build da imagem, e para podermos exemplificar melhor criamos um index no container que tinha um link para o arquivo que foi enviado para la, sendo assim quando eu acessei o container e cliquei no link tive a certeza que meu arquivo havia sido copiado .
 
 os comandos é mais do mesmo, a magica ta no Dockerfile que está dentro da pasta /build-copy
+
+
+43. Uso das instruções para execução do container (Parte 1)
+
+Aqui ele criou um servidor utilizando python, e deixou para baixarmos, nada de mais.
+
+
+
+44. Uso das instruções para execução do container (Parte 2)
+
+        docker image build -t python-3-6 .
+
+
+docker container run -it -v C:/Users/lukas/Documents/projects/docker/servidorPython:/app -p 80:8000 --name python-tst python-3-6
+
+Aqui ele criou uma comando python que segundo a lenda deveria iniciar um servidor python dentro container, o que no meu teste não aconteceu, e como isso não aconteceu eu não tive o resultado esperado, porém vou mandar uns testes aqui e ver se consigo simular a aula de outra forma.
+
+Sem chance até o momento.
+
+
+
+45. Enviar Imagens para o Docker Hub
+
+Aqui ele fala para você poder subir uma imagem para o dockerhub, é bem simples, cria uma conta, loga na sua conta pelo terminal utilizando o comando 
+
+        docker login --username=SeuUserName
+
+vai pedir a senha coloca e ai deve aparecer a seguinte mensagem.
+
+        "login Succeeded"
+
+ai para enviar a imagem para la ela deve estar com uma tag se não tiver utilize o comando 
+
+        docker image tag nomeDaImagem userDokcerhub/nomeDaImagem:1.0
+
+Assim você vai criar uma tag para a imagem que você já tem, para enviar a imagem para o dockerhub utilize o comando
+
+        docker image push userDokcerhub/nomeDaImagem:1.0
