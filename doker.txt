@@ -454,3 +454,102 @@ ai para enviar a imagem para la ela deve estar com uma tag se não tiver utilize
 Assim você vai criar uma tag para a imagem que você já tem, para enviar a imagem para o dockerhub utilize o comando
 
         docker image push userDokcerhub/nomeDaImagem:1.0
+
+
+Seção 6: Redes
+
+
+46. Visão Geral e Tipos de Redes
+
+Aqui ele basicamente apresenta os tipos de redes existentes do docker.
+
+bridge - esse é quando os containers acessam uma rede que é criada pelo docker para acessar a internet através da maquina host.
+host - é quando não existe a bridge no meio do caminho e você acessa diretamente o host sem passar por intermediarios.
+none - Não possui nenhum acesso a internet.
+Overlay Network - Isso aqui não é utilizado por nós reles mortais.
+
+
+
+47. Rede Tipo None (Sem Rede)
+
+        docker container run --rm alpine ash -c "ifconfig"
+
+Aqui eu to criando um container utilizando essa imagem alpine que já mando remover ele assim que ele executar, e ainda mando ele utilizar um terminal que é bem mais leve dentro desse container e mostrar a interface de rede, que nesse caso por padrão vem como bridge, ou seja tem uma camada extra entre meu container e o host.
+
+        docker container run --rm --net none alpine ash -c "ifconfig"
+
+Aqui eu to obrigando o container a subir com a interface de rede desligada o que na teoria obriga ele a ser offline, invisível até para outros containers.
+
+
+
+48. Rede Tipo Bridge
+
+        docker container run -d --name container1 alpine sleep 1000
+
+Aqui eu já começo criando 2 containers do alpine e como eu não alterei nada ele ficou com as configurações padrão e Network de bridge, e a parte ali do sleep pelo que eu intendo é para ele ficar rodar ou ser desativado após esse tempo. além da flag '-d' que serve para ele executar no modo daemon, que roda mais não trava o terminal.
+
+
+        docker container exec -it container1 ifconfig
+
+Esse cara aqui eu to acessando o container e pegando as informações de rede dele, no caso para poder fazer o proximo teste.
+
+        
+        docker container exec -it container1 ping  172.17.0.3
+
+Nesse caso o IP que está ali é o do container 2, que eu criei com o alpine mesmo, e trouxe mesmo resultado, e como eu to com a rede padrão eu consigo até pingar a internet daqui, utilizando o domínio da web que eu quiser.
+
+
+        docker network create --driver bridge rede_nova
+
+Aqui eu to criando uma nova rede baseada na rede bridge, e aqui é uma rede nova completamente separada das outras com sua propria faixa de ip e os caramba.
+
+        docker network ls 
+
+mostra todas as redes incluindo a nossa nova rede.
+
+        docker network inspect rede_nova
+
+mostra todos os dados da nova rede.
+
+
+        docker container run -d --name container3 --net rede_nova alpine sleep 1000
+
+Aqui como eu passei qual seria a rede que o container deveria utilizar ele pegou a rede nova e pau no gato, se eu não tivesse informado nada ele pegaria a rede padrão e boa.
+
+
+        docker container exec -it container3 ping 172.17.0.2
+
+Aqui eu to tentando pingar com o container da rede_nova para o container da rede normal e nem chama.
+
+
+        docker network connect bridge container3
+
+Aqui eu estou conectando a rede bridge ( que é a padrão e onde estão os outros containers) ao container3, e nesse caso ele mostra agora que tem 2 interfaces de rede.
+
+        
+        docker container exec -it container3 ping 172.17.0.2
+
+Agora esse comando funciona porque ele tem a mesma interface dele.
+
+
+        docker network disconnect  bridge container3
+
+Aqui estou desconectando o container3 da rede bridge e quando utilizo o comando 
+
+        docker exec -it container3 ifconfig 
+
+ele só mostra 1 interface de rede, além do comando de ping não funcionar mais.
+
+
+
+49. Rede Tipo Host
+
+
+        docker container run -d --name container4 --net host alpine sleep 1000
+
+Aqui eu apenas informei que a rede seria direto no host mesmo, ou seja na maquina onde o docker está instalado, segundo a lenda temos um pouco mais de performance mais isso deixa o nosso container e nosso host mais vulnerável.
+
+
+        docker exec -it container4 ifconfig
+
+Aqui depois quando eu mando lista ele trás todas as interfaces que minha maquina tem estão expostas no container.
