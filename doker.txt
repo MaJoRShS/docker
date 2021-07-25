@@ -553,3 +553,33 @@ Aqui eu apenas informei que a rede seria direto no host mesmo, ou seja na maquin
         docker exec -it container4 ifconfig
 
 Aqui depois quando eu mando lista ele trás todas as interfaces que minha maquina tem estão expostas no container.
+
+
+Seção 7: Coordenando Múltiplos Containers
+
+50. Introdução
+
+Aqui ele explica mais sobre como funciona o docker compose, que no caso serve para que você sempre tenha uma coordenação de vários containers de uma única vez.
+
+
+
+51. Gerenciamento de micro service
+
+Aqui ele basicamente da uma introdução sobre o conceito de micro-serviço e fala sobre a implementação de uma infraestrutura para poder manter esses micro-serviço, que basicamente é para que você crie um container para cada micro-serviço e ainda mais utilize o docker compose para poder orquestrar tudo isso.
+
+
+Seção 8: Projeto Cadastro Simples
+
+52. Estrutura Inicial
+
+
+Aqui ele fez uma configuração inicial para podermos rodar as paradas, criou uma pasta para o projeto, criou uma para o back e outra para o front e ainda deixou no jeito o node, mais segundo a lenda não vamos utilzar o node por aqui, mais sim pelo container.
+
+53. Configurando Ambiente com Compose
+
+Aqui montamos um docker-compose com 3 containers dentro, e ele não só chamou as paradas, e baixou tudo com já deixa os container UP, eu acredito que as pipes que o Jadson monta são todos docker-compose que devem chamar todos os containers e ainda podendo ser alterado.
+
+
+54. Finalizando o Cadastro
+
+Aqui ele finalizou o sistema de cadastro, e ficou bem legalzinho utilizou apenas html , css, e js + jquery, além de apresentar o docker compose que fez na real a parada ficar toda pronta com poucas linhas de código e com quase nada de config, claro que tudo pode e tende a ficar mais complexo , mais deu para ter uma excelente idea de como compor ambientes com docker.
