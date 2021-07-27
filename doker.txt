@@ -583,3 +583,57 @@ Aqui montamos um docker-compose com 3 containers dentro, e ele não só chamou a
 54. Finalizando o Cadastro
 
 Aqui ele finalizou o sistema de cadastro, e ficou bem legalzinho utilizou apenas html , css, e js + jquery, além de apresentar o docker compose que fez na real a parada ficar toda pronta com poucas linhas de código e com quase nada de config, claro que tudo pode e tende a ficar mais complexo , mais deu para ter uma excelente idea de como compor ambientes com docker.
+
+
+Seção 9: Projeto para Envio de E-mails com Workers
+
+55. Visão Geral
+
+Aqui ele mostrou com vai funcionar o exercício para que consigamos persistir as informações do curso na nossa cabeça.
+
+
+
+56. Banco de dados
+
+Aqui temos uma novidade da para usar o -d no compose também , qu eu acabei de fazer aqui foi o seguinte, criei um docker-compose com postgreSQL , ai tem os esquemas de subir ele utilizando o daemon com a flag '-d'
+        docker-compose up -d
+
+depois da para usar o 'ps' para poder mostrar os containers ligados 
+
+        docker-compose ps
+
+Esse comanda abaixo acessa o container recém criado , e lista todos as dataBases que tem instaladas no postgre até o momento.
+
+        docker-compose exec db psql -U postgres -c "\l"
+
+
+OBS, o docker-compose ps só funcionou dentro da pasta do projeto.
+        os manos do curso postaram uma variável de ambiente que ai fez funcionar na windows.
+        e no ultimo comando precisou ser passado como aspas duplas no \l se não não ia ai depois funcionou normal esse lixo.
+
+
+57. Volumes
+
+Aqui ele está criando as paradas para mapear os volumes de onde vão estar os scripts de criação das tabelas do banco de dados.
+
+58. Front-end
+
+
+59. Filas
+
+
+60. Proxy reverso8m
+
+61. Redes
+
+
+62. Workers
+
+
+63. Múltiplas instâncias
+
+
+64. Boas práticas — Variáveis de ambiente
+
+
+65. Override
