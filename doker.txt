@@ -618,22 +618,36 @@ Aqui ele está criando as paradas para mapear os volumes de onde vão estar os s
 
 58. Front-end
 
+Aqui montamos toda parte de frontend da aplicação, claro que é bem simples mais está utilizando os conceitos do curso.
+
 
 59. Filas
 
+Simples aqui eu já caguei, e simplesmente dei um clone do Repositório e to seguindo por ele agora, aqui tava dando erro na subida do compose e eu não encontrava.
 
-60. Proxy reverso8m
+60. Proxy reverso
+
+Aqui ele utilizou um redirecionamento para fazer com que todas as chamadas que vierem pelo frontend com a url /api seja redirecionada para o nosso container que tem o python no backend.
+o único problema é que mesmo eu baixando o repositório do curso o python não sobe.
 
 61. Redes
 
+Aqui ele mostra que é possível criar uma uma rede para cada container, ou mesmo configurar para que mostre quais containers podem acessar quais redes.
 
 62. Workers
 
+Aqui ele criou basicamente um micro serviço para poder enviar email, ou mensagem , é tudo em python mais ta cagado porque eu não to conseguindo subir o pyhton3.6
 
 63. Múltiplas instâncias
 
+        docker-compose up -d --scale worker=5
+
+Aqui eu to escalando a quantidade de worker que eu quero, no caso to passando a flag '--scale', o nome do container que eu quero escalar mais a quantidade.
 
 64. Boas práticas — Variáveis de ambiente
 
+Aqui ele criou algumas variáveis de ambiente e colocou no meio do python e ele consegue passar esses caras para o código por meio do docker-compose porque ele utilizou a parte de environment do compose.
 
 65. Override
+
+Aqui ele mostrou que é possível sobrescrever variáveis de ambiente sem nem mexer no docker-compose.
